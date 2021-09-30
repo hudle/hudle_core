@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hudle_theme/hudle_theme.dart';
 
 
@@ -20,34 +21,32 @@ class EditTextField extends StatelessWidget {
   final int? maxLength;
   final bool readOnly;
   final bool showAsHint;
-  final String? hint;
   final int? maxLines;
-  final int? minLines;
-  final bool alignLabelWithHint;
+  final String? hint;
+  final String? counterText;
+  final TextInputFormatter? textInputFormatter;
 
-  EditTextField(
-      {required this.labelText,
-        this.controller,
-        this.errorText,
-        this.obscureText = false,
-        this.height = 48,
-        this.validator,
-        this.hint,
-        this.enable = true,
-        this.contentPadding =
-        const EdgeInsets.symmetric(vertical: 20.0, horizontal: 15.0),
-        this.suffix,
-        this.suffixText,
-        this.keyboardType,
-        this.onChanged,
-        this.focusNode,
-        this.maxLength,
-        this.minLines,
-        this.maxLines = 1,
-        this.alignLabelWithHint = true,
-        this.readOnly = false,
-        this.showAsHint = false,
-        this.onFieldSubmitted});
+  EditTextField({required this.labelText,
+    this.controller,
+    this.errorText,
+    this.obscureText = false,
+    this.height = 48,
+    this.validator,
+    this.hint,
+    this.enable = true,
+    this.contentPadding = const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+    this.suffix,
+    this.suffixText,
+    this.keyboardType,
+    this.onChanged,
+    this.focusNode,
+    this.maxLength,
+    this.maxLines = 1,
+    this.counterText,
+    this.textInputFormatter,
+    this.readOnly = false,
+    this.showAsHint = false,
+    this.onFieldSubmitted});
 
   @override
   Widget build(BuildContext context) {
@@ -55,25 +54,25 @@ class EditTextField extends StatelessWidget {
       //height: height,
       child: TextFormField(
         readOnly: readOnly,
-        maxLength: maxLength,
+        maxLength: maxLength ,
         obscureText: obscureText,
         enabled: enable,
         maxLines: maxLines,
-        minLines: minLines,
         focusNode: focusNode,
         validator: validator,
         controller: controller,
         keyboardType: keyboardType,
         onFieldSubmitted: onFieldSubmitted,
         onChanged: onChanged,
+        inputFormatters: textInputFormatter != null? [textInputFormatter!] : null,
         decoration: InputDecoration(
-          alignLabelWithHint: alignLabelWithHint,
           contentPadding: contentPadding,
           labelText: !showAsHint ? labelText : null,
           hintText: showAsHint ? labelText : hint,
           suffixIcon: suffix,
           suffix: suffixText,
           errorText: errorText,
+          counterText: counterText,
           labelStyle:
           TextStyle(color: false ? kColorAccent : kColorEditTextHint),
           focusedBorder: OutlineInputBorder(
@@ -126,12 +125,15 @@ class AutoCompleteText<T extends Object> extends StatelessWidget {
   final AutocompleteOnSelected<T>? onSelected;
   final AutocompleteOptionToString<T> displayStringForOption;
   final Function? onFiledViewBuilder;
+  final int? maxLength;
+  final String? counterText;
+  final TextInputFormatter? textInputFormatter;
 
   AutoCompleteText({
     required this.labelText, this.errorText, required this.onTextChanged, this.keyboardType, this.matchCriteriaBuilder,
     required this.iterable, required this.suggestionTileBuilder, this.onSelected,
-    this.onFiledViewBuilder
-    ,
+    this.onFiledViewBuilder, this.maxLength, this.counterText
+    , this.textInputFormatter,
     required this.displayStringForOption
   });
 
@@ -147,6 +149,9 @@ class AutoCompleteText<T extends Object> extends StatelessWidget {
           labelText: labelText,
           keyboardType: keyboardType,
           controller: textController,
+          maxLength: maxLength,
+          counterText: counterText,
+          textInputFormatter: textInputFormatter,
           focusNode: node,
           onFieldSubmitted: (v) {
             onFieldSubmitted();
