@@ -128,22 +128,39 @@ class SelectorButton extends StatelessWidget {
   final String text;
   final double? width;
   final VoidCallback? onTap;
+  final double border;
+  final double fontSize;
+  final EdgeInsets? padding;
+  final Color? selectedBackgroundColor;
+  final Color? unSelectedBackgroundColor;
+
   const SelectorButton(
-      {Key? key, this.isSelected = false, this.width, required this.text, this.onTap})
+      {Key? key,
+        this.isSelected = false,
+        this.width,
+        required this.text,
+        this.onTap,
+        this.border = 4,
+        this.fontSize = 14,
+        this.padding,
+        this.selectedBackgroundColor,
+        this.unSelectedBackgroundColor})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: padding ?? const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       decoration: BoxDecoration(
-          color: isSelected ? kColorAccent20 : kColorDisabled,
-          borderRadius: BorderRadius.circular(4)),
+          color: isSelected ? selectedBackgroundColor ?? kColorAccent20 : unSelectedBackgroundColor ?? kColorDisabled,
+          borderRadius: BorderRadius.circular(border)),
       child: InkWell(
         onTap: onTap,
         child: Center(
             child: NormalText(text,
+                overflow: TextOverflow.ellipsis,
+                fontSize: fontSize ,
                 color: isSelected ? kColorAccent : kPrimaryText,
                 fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal)),
       ),
