@@ -169,4 +169,52 @@ class SelectorButton extends StatelessWidget {
 }
 
 
+class HudleFlatButton extends StatelessWidget {
+  final Color color;
+  final Color textColor;
+  final String text;
+  final double? width;
+  final double? fontSize;
+  final EdgeInsets? padding;
+  final FontWeight? fontWeight;
+  final VoidCallback? onPressed;
+  final Alignment alignment;
+
+  const HudleFlatButton(
+      {Key? key,
+        required this.text,
+        this.color = kColorAccent,
+        this.textColor = kColorWhite,
+        this.padding,
+        this.width,
+        this.fontSize,
+        this.alignment = Alignment.center,
+        this.fontWeight,
+        this.onPressed})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onPressed,
+      child: Container(
+        width: width,
+        color: color,
+        padding:
+        padding ?? const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        child: Align(
+          alignment: alignment,
+          child: NormalText(
+            text,
+            fontSize: fontSize ?? 16,
+            color: textColor,
+            fontWeight: fontWeight,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
 
