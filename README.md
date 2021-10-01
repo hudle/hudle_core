@@ -6,8 +6,8 @@ Core Element Of Hudle Project
 
      dependencies:
         hudle_core:
-        git:
-          url: git://github.com/hudle/hudle_core
+            git:
+                url: git://github.com/hudle/hudle_core
 
 ### Docs
 
