@@ -5,6 +5,7 @@ export 'src/text_field.dart';
 export 'src/buttons.dart';
 export 'src/avtar.dart';
 export 'src/pages/error_page.dart';
+export 'src/pages/filter_page.dart';
 export 'src/utilities_widget.dart';
 export 'src/interfaces/error_interface.dart';
 export 'src/vo/resource.dart';
