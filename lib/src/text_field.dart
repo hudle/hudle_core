@@ -25,6 +25,8 @@ class EditTextField extends StatelessWidget {
   final String? hint;
   final String? counterText;
   final TextInputFormatter? textInputFormatter;
+  final bool alignLabelWithHint;
+  final int? minLines;
 
   EditTextField({required this.labelText,
     this.controller,
@@ -41,9 +43,11 @@ class EditTextField extends StatelessWidget {
     this.onChanged,
     this.focusNode,
     this.maxLength,
+    this.minLines,
     this.maxLines = 1,
     this.counterText,
     this.textInputFormatter,
+    this.alignLabelWithHint = true,
     this.readOnly = false,
     this.showAsHint = false,
     this.onFieldSubmitted});
@@ -58,6 +62,7 @@ class EditTextField extends StatelessWidget {
         obscureText: obscureText,
         enabled: enable,
         maxLines: maxLines,
+        minLines: minLines,
         focusNode: focusNode,
         validator: validator,
         controller: controller,
@@ -66,6 +71,7 @@ class EditTextField extends StatelessWidget {
         onChanged: onChanged,
         inputFormatters: textInputFormatter != null? [textInputFormatter!] : null,
         decoration: InputDecoration(
+          alignLabelWithHint: alignLabelWithHint,
           contentPadding: contentPadding,
           labelText: !showAsHint ? labelText : null,
           hintText: showAsHint ? labelText : hint,
