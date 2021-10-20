@@ -26,6 +26,7 @@ class GetXMainBody extends StatelessWidget implements ErrorInterface {
   final Function? onValidationErrorCallback;
   final Function? onForbiddenErrorCallback;
   final Function? onUnauthorizedErrorCallback;
+  final Function? onNotFoundCallback;
   final List<int> showErrorPageOnlyForCode;
   final List<int> avoidErrorPageOnlyForCode;
   final NoDataWidgetBuilder? noDataWidgetBuilder;
@@ -46,6 +47,7 @@ class GetXMainBody extends StatelessWidget implements ErrorInterface {
         this.onUnauthorizedErrorCallback,
         this.onValidationErrorCallback,
         this.onForbiddenErrorCallback,
+        this.onNotFoundCallback,
         this.avoidErrorPageOnlyForCode = const [],
         this.showErrorPageOnlyForCode = ERROR_CODES_PAGE,
         this.disableMaxHeight = false,
@@ -147,7 +149,9 @@ class GetXMainBody extends StatelessWidget implements ErrorInterface {
   }
 
   @override
-  void onNotFound(ErrorResource errorResource) {}
+  void onNotFound(ErrorResource errorResource) {
+    onNotFoundCallback?.call(errorResource);
+  }
 
   @override
   void onUnauthorizedAccess(ErrorResource errorResource) async{
