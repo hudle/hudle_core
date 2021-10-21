@@ -7,28 +7,26 @@ class PrimaryText extends Text {
   final FontWeight? fontWeight;
   final double fontSize;
 
-  PrimaryText(String data, {this.fontWeight, this.fontSize = 16, int? maxLines, TextOverflow? overflow,})
+  PrimaryText(String data, {this.fontWeight, this.fontSize = 16, TextDecoration? decoration, int? maxLines, TextOverflow? overflow})
       : super(data, maxLines: maxLines, overflow: overflow,
-      style: primaryStyle(fontWeight: fontWeight, fontSize: fontSize));
+      style: primaryStyle(fontWeight: fontWeight, fontSize: fontSize, decoration: decoration));
 }
-
 
 class PrimaryTextMedium extends Text {
   final double fontSize;
 
-  PrimaryTextMedium(String data, {this.fontSize = 16, int? maxLines, TextOverflow? overflow,})
-      : super(data, maxLines: maxLines, overflow: overflow,
+  PrimaryTextMedium(String data, {this.fontSize = 16})
+      : super(data,
       style:
       primaryStyle(fontWeight: FontWeight.w500, fontSize: fontSize));
 }
-
 
 class SecondaryText extends Text {
   final FontWeight? fontWeight;
   final double fontSize;
 
-  SecondaryText(String data, {this.fontWeight, this.fontSize = 14, TextOverflow? overflow, int? maxLines})
-      : super(data, overflow: overflow, maxLines: maxLines,
+  SecondaryText(String data, {this.fontWeight, this.fontSize = 14, TextOverflow? overflow, int? maxLine})
+      : super(data, overflow: overflow, maxLines: maxLine,
       style: secondaryStyle(fontWeight: fontWeight, fontSize: fontSize));
 }
 
@@ -44,11 +42,11 @@ class NormalText extends Text {
       {this.fontWeight,
         this.fontSize = 14,
         this.color = kPrimaryText,
-        this.textAlign, this.textDecoration, TextOverflow? overflow, int? maxLines})
+        this.textAlign, this.textDecoration, TextOverflow? overflow, int? maxLine})
       : super(data,
       textAlign: textAlign,
       overflow: overflow,
-      maxLines: maxLines,
+      maxLines: maxLine,
       style: normalStyle(
           fontWeight: fontWeight, fontSize: fontSize, color: color, decoration: textDecoration));
 }
