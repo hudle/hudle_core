@@ -154,10 +154,11 @@ class DataText extends StatelessWidget {
 
 class VerticalHeadDataText extends StatelessWidget {
 
-  final String? header;
-  final String? data;
+  final String header;
+  final String data;
+  final VoidCallback? onDataTap;
 
-  VerticalHeadDataText({required this.header, required this.data});
+  VerticalHeadDataText({required this.header, required this.data, this.onDataTap});
 
   @override
   Widget build(BuildContext context) {
@@ -167,12 +168,15 @@ class VerticalHeadDataText extends StatelessWidget {
         children: [
           HeadingText(header),
           VerticalGap(gap: 2,),
-          DataText(data!)
+          InkWell(
+            onTap: onDataTap,
+              child: DataText(data))
         ],
       ),
     );
   }
 }
+
 
 
 class LabelText extends StatelessWidget {
