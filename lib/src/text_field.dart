@@ -25,8 +25,6 @@ class EditTextField extends StatelessWidget {
   final String? hint;
   final String? counterText;
   final TextInputFormatter? textInputFormatter;
-  final bool alignLabelWithHint;
-  final int? minLines;
 
   EditTextField({required this.labelText,
     this.controller,
@@ -43,11 +41,9 @@ class EditTextField extends StatelessWidget {
     this.onChanged,
     this.focusNode,
     this.maxLength,
-    this.minLines,
     this.maxLines = 1,
     this.counterText,
     this.textInputFormatter,
-    this.alignLabelWithHint = true,
     this.readOnly = false,
     this.showAsHint = false,
     this.onFieldSubmitted});
@@ -62,7 +58,6 @@ class EditTextField extends StatelessWidget {
         obscureText: obscureText,
         enabled: enable,
         maxLines: maxLines,
-        minLines: minLines,
         focusNode: focusNode,
         validator: validator,
         controller: controller,
@@ -71,7 +66,6 @@ class EditTextField extends StatelessWidget {
         onChanged: onChanged,
         inputFormatters: textInputFormatter != null? [textInputFormatter!] : null,
         decoration: InputDecoration(
-          alignLabelWithHint: alignLabelWithHint,
           contentPadding: contentPadding,
           labelText: !showAsHint ? labelText : null,
           hintText: showAsHint ? labelText : hint,
@@ -134,12 +128,13 @@ class AutoCompleteText<T extends Object> extends StatelessWidget {
   final int? maxLength;
   final String? counterText;
   final TextInputFormatter? textInputFormatter;
+  final FormFieldValidator<String>? validator;
 
   AutoCompleteText({
     required this.labelText, this.errorText, required this.onTextChanged, this.keyboardType, this.matchCriteriaBuilder,
     required this.iterable, required this.suggestionTileBuilder, this.onSelected,
     this.onFiledViewBuilder, this.maxLength, this.counterText
-    , this.textInputFormatter,
+    , this.textInputFormatter, this.validator,
     required this.displayStringForOption
   });
 
@@ -154,6 +149,7 @@ class AutoCompleteText<T extends Object> extends StatelessWidget {
         return EditTextField(
           labelText: labelText,
           keyboardType: keyboardType,
+          validator: validator,
           controller: textController,
           maxLength: maxLength,
           counterText: counterText,
@@ -209,6 +205,9 @@ class AutoCompleteText<T extends Object> extends StatelessWidget {
         });
       },
       onSelected: onSelected,
+      // onSelected: (T selection) {
+      //   print('You just selected $selection');
+      // },
     );
   }
 }
