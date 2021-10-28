@@ -104,7 +104,11 @@ class ValidationError {
   @JsonKey(name:"closest_metro")
   List<String>? closestMetroArray;
   @JsonKey(name:"skill_level")
-  List<String>? skillLevelArray;
+  List<String>? skillLevelArray;@
+  JsonKey(name:"users")
+  List<String>? usersArray;
+  @JsonKey(name:"type")
+  List<String>? typeArray;
 
 
   ValidationError(
@@ -158,7 +162,9 @@ class ValidationError {
     this.businessProfileAddressArray,
     this.businessProfileGstNoArray,
     this.sportsIdsArray,
-    this.skillLevelArray
+    this.skillLevelArray,
+    this.typeArray,
+    this.usersArray
 });
 
   factory ValidationError.fromJson(Map<String, dynamic> json) => _$ValidationErrorFromJson(json);

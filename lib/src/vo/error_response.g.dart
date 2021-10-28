@@ -137,6 +137,10 @@ ValidationError _$ValidationErrorFromJson(Map<String, dynamic> json) {
     skillLevelArray: (json['skill_level'] as List<dynamic>?)
         ?.map((e) => e as String)
         .toList(),
+    typeArray:
+        (json['type'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    usersArray:
+        (json['users'] as List<dynamic>?)?.map((e) => e as String).toList(),
   );
 }
 
@@ -192,4 +196,6 @@ Map<String, dynamic> _$ValidationErrorToJson(ValidationError instance) =>
       'business_profile.gst_no': instance.businessProfileGstNoArray,
       'closest_metro': instance.closestMetroArray,
       'skill_level': instance.skillLevelArray,
+      'users': instance.usersArray,
+      'type': instance.typeArray,
     };
