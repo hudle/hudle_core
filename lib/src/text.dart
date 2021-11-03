@@ -42,11 +42,11 @@ class NormalText extends Text {
       {this.fontWeight,
         this.fontSize = 14,
         this.color = kPrimaryText,
-        this.textAlign, this.textDecoration, TextOverflow? overflow, int? maxLine})
+        this.textAlign, this.textDecoration, TextOverflow? overflow, int? maxLines})
       : super(data,
       textAlign: textAlign,
       overflow: overflow,
-      maxLines: maxLine,
+      maxLines: maxLines,
       style: normalStyle(
           fontWeight: fontWeight, fontSize: fontSize, color: color, decoration: textDecoration));
 }
