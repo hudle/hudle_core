@@ -141,13 +141,18 @@ class AutoCompleteText<T extends Object> extends StatelessWidget {
   final String? counterText;
   final TextInputFormatter? textInputFormatter;
   final FormFieldValidator<String>? validator;
+  final Widget? prefix;
+  final Widget? prefixIcon;
+  final EdgeInsetsGeometry? contentPadding;
+  final Widget? suffix;
+  final Widget? suffixText;
 
   AutoCompleteText({
     required this.labelText, this.errorText, required this.onTextChanged, this.keyboardType, this.matchCriteriaBuilder,
     required this.iterable, required this.suggestionTileBuilder, this.onSelected,
     this.onFiledViewBuilder, this.maxLength, this.counterText
     , this.textInputFormatter, this.validator,
-    required this.displayStringForOption
+    required this.displayStringForOption, this.prefixIcon, this.prefix, this.contentPadding, this.suffixText, this.suffix
   });
 
   @override
@@ -166,6 +171,10 @@ class AutoCompleteText<T extends Object> extends StatelessWidget {
           maxLength: maxLength,
           counterText: counterText,
           textInputFormatter: textInputFormatter,
+          suffix: suffix,
+          suffixText: suffixText,
+          prefixIcon: prefixIcon,
+          prefix: prefix,
           focusNode: node,
           onFieldSubmitted: (v) {
             onFieldSubmitted();
