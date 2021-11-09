@@ -141,6 +141,19 @@ ValidationError _$ValidationErrorFromJson(Map<String, dynamic> json) {
         (json['type'] as List<dynamic>?)?.map((e) => e as String).toList(),
     usersArray:
         (json['users'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    venueId:
+        (json['venue_id'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    isPaid:
+        (json['is_paid'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    noOfParticipants: (json['no_of_participants'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList(),
+    perPlayerShare: (json['per_player_share'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList(),
+    sportsId:
+        (json['sport_id'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    uuid: (json['id'] as List<dynamic>?)?.map((e) => e as String).toList(),
   );
 }
 
@@ -198,4 +211,10 @@ Map<String, dynamic> _$ValidationErrorToJson(ValidationError instance) =>
       'skill_level': instance.skillLevelArray,
       'users': instance.usersArray,
       'type': instance.typeArray,
+      'id': instance.uuid,
+      'per_player_share': instance.perPlayerShare,
+      'no_of_participants': instance.noOfParticipants,
+      'venue_id': instance.venueId,
+      'sport_id': instance.sportsId,
+      'is_paid': instance.isPaid,
     };

@@ -109,6 +109,18 @@ class ValidationError {
   List<String>? usersArray;
   @JsonKey(name:"type")
   List<String>? typeArray;
+  @JsonKey(name:"id")
+  List<String>? uuid;
+  @JsonKey(name:"per_player_share")
+  List<String>? perPlayerShare;
+  @JsonKey(name:"no_of_participants")
+  List<String>? noOfParticipants;
+  @JsonKey(name:"venue_id")
+  List<String>? venueId;
+  @JsonKey(name:"sport_id")
+  List<String>? sportsId;
+  @JsonKey(name:"is_paid")
+  List<String>? isPaid;
 
 
   ValidationError(
@@ -164,7 +176,13 @@ class ValidationError {
     this.sportsIdsArray,
     this.skillLevelArray,
     this.typeArray,
-    this.usersArray
+    this.usersArray,
+    this.venueId,
+    this.isPaid,
+    this.noOfParticipants,
+    this.perPlayerShare,
+    this.sportsId,
+    this.uuid
 });
 
   factory ValidationError.fromJson(Map<String, dynamic> json) => _$ValidationErrorFromJson(json);

@@ -29,6 +29,7 @@ class EditTextField extends StatelessWidget {
   final int? minLines;
   final Widget? prefix;
   final Widget? prefixIcon;
+  final TextAlign textAlign;
 
   EditTextField({required this.labelText,
     this.controller,
@@ -54,6 +55,7 @@ class EditTextField extends StatelessWidget {
     this.alignLabelWithHint = true,
     this.readOnly = false,
     this.showAsHint = false,
+    this.textAlign = TextAlign.start,
     this.onFieldSubmitted});
 
   @override
@@ -73,6 +75,7 @@ class EditTextField extends StatelessWidget {
         keyboardType: keyboardType,
         onFieldSubmitted: onFieldSubmitted,
         onChanged: onChanged,
+        textAlign: textAlign,
         inputFormatters: textInputFormatter != null? [textInputFormatter!] : null,
         decoration: InputDecoration(
           alignLabelWithHint: alignLabelWithHint,
