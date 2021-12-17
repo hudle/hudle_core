@@ -33,7 +33,7 @@ class _FilterPageState extends State<FilterPage> {
             children: [
               Expanded(
                 flex: 3,
-                child: _FilterOptionPage(onReset: widget.onReset,),
+                child: _FilterOptionPage(onReset: widget.onApply,),
               ),
               Expanded(
                 flex: 7,
