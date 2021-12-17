@@ -189,6 +189,9 @@ class LabelText extends StatelessWidget {
   final Color? backgroundColor;
   final double cornerRadius;
   final IconArrangement arrangement;
+  final CrossAxisAlignment iconAlignment;
+  final TextAlign? textAlign;
+  final int? maxLines;
 
   const LabelText(
       {Key? key,
@@ -199,6 +202,9 @@ class LabelText extends StatelessWidget {
         this.iconPadding = 4,
         this.cornerRadius = 0.0,
         this.backgroundColor,
+        this.textAlign,
+        this.maxLines,
+        this.iconAlignment = CrossAxisAlignment.center,
         this.textColor = kPrimaryText,
         this.iconColor = kColorAccent})
       : super(key: key);
@@ -207,8 +213,8 @@ class LabelText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-          color: backgroundColor,
-          borderRadius: BorderRadius.circular(cornerRadius)
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(cornerRadius)
         ),
         padding: backgroundColor != null ? EdgeInsets.symmetric(horizontal: 8, vertical: 4) : null,
         child: arrangement == IconArrangement.right ||
@@ -219,6 +225,7 @@ class LabelText extends StatelessWidget {
 
   Widget horizontalArrangement() {
     return Row(
+      crossAxisAlignment: iconAlignment,
       mainAxisSize: MainAxisSize.min,
       children: [
         if (arrangement == IconArrangement.left)
@@ -226,7 +233,7 @@ class LabelText extends StatelessWidget {
             padding: EdgeInsets.only(right: iconPadding),
             child: iconWidget,
           ),
-        textWidget,
+        Expanded(child: textWidget),
         if (arrangement == IconArrangement.right)
           Padding(
             padding: EdgeInsets.only(left: iconPadding),
@@ -257,7 +264,7 @@ class LabelText extends StatelessWidget {
 
   Widget get iconWidget => Icon(icon, size: fontSize * 1.5, color: iconColor,);
 
-  Widget get textWidget => NormalText(text, color: textColor,);
+  Widget get textWidget => NormalText(text, color: textColor, textAlign: textAlign, maxLines: maxLines, overflow: TextOverflow.ellipsis,);
 }
 
 enum IconArrangement { left, right, top, bottom }
