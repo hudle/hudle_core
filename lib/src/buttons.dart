@@ -8,32 +8,33 @@ import '../hudle_core.dart';
 class PrimaryButton extends StatelessWidget {
 
   final String text;
-  final Function onPressed;
+  final VoidCallback? onPressed;
   final double height;
   final double width;
+  final Color? color;
+  final Color? textColor;
 
-  PrimaryButton({required this.text,required this.onPressed, this.height = 30, this.width = 88});
+  PrimaryButton({required this.text,required this.onPressed, this.height = 30, this.width = 88, this.color, this.textColor = kColorWhite});
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-        shape: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(4)
-        ),
-        elevation: 0,
-        height: height,
-        minWidth: width,
-        disabledColor: kColorGrey400,
-        splashColor: kColorAccentDark,
-        color: kColorAccent,
-        child: Text("$text".toUpperCase(), style: GoogleFonts.roboto(
-            fontWeight: FontWeight.bold,
-            color: kColorWhite
-        ),),
-        onPressed: () {
-          onPressed();
-        });
+      shape: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(4)
+      ),
+      elevation: 0,
+      height: height,
+      minWidth: width,
+      disabledColor: kColorGrey400,
+      splashColor: kColorAccentDark,
+      color: color ?? kColorAccent,
+      child: Text("$text".toUpperCase(), style: GoogleFonts.roboto(
+          fontWeight: FontWeight.bold,
+          color: textColor
+      ),),
+      onPressed: onPressed,
+    );
   }
 }
 
@@ -73,23 +74,49 @@ class AccentButton extends StatelessWidget {
 }
 
 class StrokeButton extends OutlinedButton {
-  StrokeButton({required String text, required VoidCallback onPressed, double fontSize = 13, IconData? icon, bool isTrailingIcon = true}) : super(
-      child: icon != null ? Row(
-        children: [
-          if (!isTrailingIcon) Padding(
+
+  StrokeButton({
+    required String text,
+    required VoidCallback onPressed,
+    double fontSize = 13,
+    IconData? icon,
+    bool isTrailingIcon = true,
+    ButtonStyle? style,
+  }) : super(
+    child: icon != null
+        ? Row(
+      children: [
+        if (!isTrailingIcon)
+          Padding(
             padding: const EdgeInsets.only(right: 8),
-            child: Icon(icon, color: kSecondaryText, size: fontSize* 1.5,),
+            child: Icon(
+              icon,
+              color: kSecondaryText,
+              size: fontSize * 1.5,
+            ),
           ),
-          SecondaryText(text, fontSize: fontSize,),
-          if (isTrailingIcon) Padding(
+        SecondaryText(
+          text,
+          fontSize: fontSize,
+        ),
+        if (isTrailingIcon)
+          Padding(
               padding: const EdgeInsets.only(left: 8),
-              child: Icon(icon, color: kSecondaryText, size: fontSize* 1.5,))
-        ],
-      ) : SecondaryText(text, fontSize: fontSize,),
-      onPressed: onPressed
+              child: Icon(
+                icon,
+                color: kSecondaryText,
+                size: fontSize * 1.5,
+              ))
+      ],
+    )
+        : SecondaryText(
+      text,
+      fontSize: fontSize,
+    ),
+    onPressed: onPressed,
+    style: style,
   );
 }
-
 class RetryImageButton extends StatelessWidget {
 
   final String text;
@@ -149,14 +176,14 @@ class SelectorButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      padding: padding ?? const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      decoration: BoxDecoration(
-          color: isSelected ? selectedBackgroundColor ?? kColorAccent20 : unSelectedBackgroundColor ?? kColorDisabled,
-          borderRadius: BorderRadius.circular(border)),
-      child: InkWell(
-        onTap: onTap,
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: width,
+        padding: padding ?? const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        decoration: BoxDecoration(
+            color: isSelected ? selectedBackgroundColor ?? kColorAccent20 : unSelectedBackgroundColor ?? kColorDisabled,
+            borderRadius: BorderRadius.circular(border)),
         child: Center(
             child: NormalText(text,
                 overflow: TextOverflow.ellipsis,
