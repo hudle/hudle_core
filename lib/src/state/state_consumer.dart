@@ -121,8 +121,6 @@ class GetXMainBody extends StatelessWidget implements ErrorInterface {
 
   @override
   void onError(ErrorResource errorResource) {
-    if (errorResource.errorCode != 422 && kDebugMode)
-      Get.snackbar("Error", errorResource.errorMessage);
 
     switch (errorResource.errorCode) {
       case 401:
