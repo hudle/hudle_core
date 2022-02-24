@@ -42,17 +42,18 @@ class PrimaryButton extends StatelessWidget {
 class AccentButton extends StatelessWidget {
 
   final String text;
-  final Function onPressed;
+  final VoidCallback? onPressed;
   final double height;
   final double width;
   final EdgeInsets? padding;
+  final double fontSize;
 
-  AccentButton({required this.text,required this.onPressed, this.height = 40, this.width = 88, this.padding});
+  AccentButton({required this.text, this.onPressed, this.height = 40, this.width = 88, this.padding, this.fontSize = 14});
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      padding: padding,
+        padding: padding,
         shape: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(4)
@@ -65,16 +66,14 @@ class AccentButton extends StatelessWidget {
         color: kColorAccent20,
         child: Text("$text".toUpperCase(), style: GoogleFonts.roboto(
             fontWeight: FontWeight.w500,
-            color: kColorAccent
+            color: kColorAccent,
+            fontSize: fontSize
         ),),
-        onPressed: () {
-          onPressed();
-        });
+        onPressed: onPressed);
   }
 }
 
 class StrokeButton extends OutlinedButton {
-
   StrokeButton({
     required String text,
     required VoidCallback onPressed,
@@ -82,6 +81,7 @@ class StrokeButton extends OutlinedButton {
     IconData? icon,
     bool isTrailingIcon = true,
     ButtonStyle? style,
+    Color? textColor,
   }) : super(
     child: icon != null
         ? Row(
@@ -95,9 +95,10 @@ class StrokeButton extends OutlinedButton {
               size: fontSize * 1.5,
             ),
           ),
-        SecondaryText(
+        NormalText(
           text,
           fontSize: fontSize,
+          color: textColor ?? kSecondaryText,
         ),
         if (isTrailingIcon)
           Padding(
@@ -109,14 +110,16 @@ class StrokeButton extends OutlinedButton {
               ))
       ],
     )
-        : SecondaryText(
+        : NormalText(
       text,
       fontSize: fontSize,
+      color: textColor ?? kSecondaryText,
     ),
     onPressed: onPressed,
     style: style,
   );
 }
+
 class RetryImageButton extends StatelessWidget {
 
   final String text;

@@ -35,6 +35,10 @@ class Meta {
   final Pagination? pagination;
   @JsonKey(name: "is_valid")
   bool? isValid;
+  @JsonKey(name: "first_unread_message_id")
+  String? firstUnreadMessageId;
+  @JsonKey(name: "extra")
+  Map<String, dynamic>? extra;
 
   Meta(this.pagination);
 

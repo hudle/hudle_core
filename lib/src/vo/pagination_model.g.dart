@@ -30,10 +30,15 @@ Meta _$MetaFromJson(Map<String, dynamic> json) {
     json['pagination'] == null
         ? null
         : Pagination.fromJson(json['pagination'] as Map<String, dynamic>),
-  )..isValid = json['is_valid'] as bool?;
+  )
+    ..isValid = json['is_valid'] as bool?
+    ..firstUnreadMessageId = json['first_unread_message_id'] as String?
+    ..extra = json['extra'] as Map<String, dynamic>?;
 }
 
 Map<String, dynamic> _$MetaToJson(Meta instance) => <String, dynamic>{
       'pagination': instance.pagination,
       'is_valid': instance.isValid,
+      'first_unread_message_id': instance.firstUnreadMessageId,
+      'extra': instance.extra,
     };

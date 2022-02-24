@@ -40,13 +40,16 @@ class SectionCard extends StatelessWidget {
   final String? trailingText;
   final EdgeInsets? margin;
   final Widget child;
+  final VoidCallback? onTrailTap;
 
   const SectionCard(
       {Key? key,
         required this.child,
         required this.header,
         required this.trailingText,
-        this.margin})
+        this.margin,
+        this.onTrailTap,
+      })
       : super(key: key);
 
   @override
@@ -69,10 +72,13 @@ class SectionCard extends StatelessWidget {
                 ),
                 Visibility(
                   visible: trailingText != null,
-                  child: NormalText(
-                    trailingText ?? "",
-                    fontSize: 12,
-                    color: kColorAccent,
+                  child: InkWell(
+                    onTap: onTrailTap,
+                    child: NormalText(
+                      trailingText ?? "",
+                      fontSize: 12,
+                      color: kColorAccent,
+                    ),
                   ),
                 )
               ],
