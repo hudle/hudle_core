@@ -30,6 +30,7 @@ class EditTextField extends StatelessWidget {
   final Widget? prefix;
   final Widget? prefixIcon;
   final TextAlign textAlign;
+  final TextCapitalization textCapitalization;
 
   EditTextField({required this.labelText,
     this.controller,
@@ -56,13 +57,16 @@ class EditTextField extends StatelessWidget {
     this.readOnly = false,
     this.showAsHint = false,
     this.textAlign = TextAlign.start,
-    this.onFieldSubmitted});
+    this.onFieldSubmitted,
+    this.textCapitalization = TextCapitalization.none,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       //height: height,
       child: TextFormField(
+        textCapitalization: textCapitalization,
         readOnly: readOnly,
         maxLength: maxLength ,
         obscureText: obscureText,
