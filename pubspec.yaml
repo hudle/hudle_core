@@ -16,6 +16,8 @@ dependencies:
   hudle_theme:
     git:
       url: https://github.com/hudle/hudle_theme
+      ref: 9e1abcb95df1613a7aabe2517351a83a0d262117
+
   gap_widget: ^0.0.1
   get_storage: ^2.0.2
   json_serializable: ^4.0.2
