@@ -322,8 +322,8 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "073efcd267ca1dcd1f5bda3eccf02822b4117f3a"
-      url: "git://github.com/hudle/hudle_theme"
+      resolved-ref: "9e1abcb95df1613a7aabe2517351a83a0d262117"
+      url: "https://github.com/hudle/hudle_theme"
     source: git
     version: "0.0.1"
   io:

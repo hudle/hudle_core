@@ -15,7 +15,7 @@ dependencies:
   cached_network_image: ^3.0.0
   hudle_theme:
     git:
-      url: git://github.com/hudle/hudle_theme
+      url: https://github.com/hudle/hudle_theme
   gap_widget: ^0.0.1
   get_storage: ^2.0.2
   json_serializable: ^4.0.2
