@@ -2,6 +2,7 @@ import 'package:get_storage/get_storage.dart';
 
 import 'app_preferences.dart';
 
+@Deprecated("Do not use get storage anymore, Use shared preference")
 class GetXPreference implements AppPreference {
 
   late GetStorage storage;
