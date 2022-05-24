@@ -8,7 +8,7 @@ import 'package:hudle_core/hudle_core.dart';
 import 'package:hudle_core/src/vo/base_response.dart';
 import 'package:hudle_core/src/vo/generic_parser.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-
+@Deprecated("Use hudle_network")
 class ErrorCode {
 
   ErrorCode._();
@@ -18,6 +18,7 @@ class ErrorCode {
   static const UNKNOWN_ERROR = -1;
 }
 
+@Deprecated("Use hudle_network")
 abstract class DioNetwork {
 
   late Dio _dio;

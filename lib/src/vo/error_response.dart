@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'error_response.g.dart';
 
+@Deprecated("Use hudle_network")
 @JsonSerializable()
 class ValidationError {
 

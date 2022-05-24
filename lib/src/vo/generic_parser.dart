@@ -1,3 +1,4 @@
+@Deprecated("Use hudle_network")
 abstract class GenericParser<T> {
 
 

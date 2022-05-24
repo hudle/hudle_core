@@ -6,6 +6,7 @@ import 'error_response.dart';
 import 'generic_parser.dart';
 import 'pagination_model.dart';
 
+@Deprecated("Use hudle_network BaseResponse")
 class BaseResponse<Data> {
   late bool success;
   late String message;
