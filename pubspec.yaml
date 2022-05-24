@@ -19,8 +19,7 @@ dependencies:
       ref: new_theme
 
   gap_widget: ^0.0.1
-  get_storage: ^2.0.2
-  json_serializable: ^4.0.2
+#  json_serializable: ^4.0.2
   url_launcher: ^6.0.3
   flutter_typeahead: ^3.2.5
 
@@ -30,8 +29,8 @@ dev_dependencies:
     sdk: flutter
   build_runner: any
   get: ^4.1.4
-  dio: ^4.0.0
-  pretty_dio_logger: ^1.1.1
+  #dio: ^4.0.0
+  #pretty_dio_logger: ^1.1.1
 
 
 

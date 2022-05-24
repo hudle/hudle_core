@@ -5,7 +5,7 @@ import 'package:hudle_theme/hudle_theme.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-T? provideViewModel<T extends BaseViewModel>(BuildContext context) => StateManager.of<T>(context)?.viewModel;
+//T? provideViewModel<T extends BaseViewModel>(BuildContext context) => StateManager.of<T>(context)?.viewModel;
 
 void showSnack(
     {String title = "Info",
