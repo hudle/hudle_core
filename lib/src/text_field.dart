@@ -66,6 +66,7 @@ class EditTextField extends StatelessWidget {
     return Container(
       //height: height,
       child: TextFormField(
+        style: normalStyle(),
         textCapitalization: textCapitalization,
         readOnly: readOnly,
         maxLength: maxLength ,
